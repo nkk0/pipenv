@@ -18,7 +18,7 @@ below and see if they resolve your problem.
 Make sure your dependencies actually *do* resolve. If you’re confident they
 are, you may need to clear your resolver cache. Run the following command::
 
-    pipenv run pipenv-resolver --clear
+    pipenv --clear
 
 and try again.
 
@@ -45,7 +45,7 @@ in your Pipfile.
 
 This is usually a result of mixing Pipenv with system packages. We *strongly*
 recommend installing Pipenv in an isolated environment. Uninstall all existing
-Pipenv installations, and see :ref:`proper_installation` to choose one of the
+Pipenv installations, and see :ref:`installing-pipenv` to choose one of the
 recommended way to install Pipenv instead.
 
 ☤ My pyenv-installed Python is not found
@@ -123,10 +123,10 @@ for more information.
 ☤ Using ``pipenv run`` in Supervisor program
 ---------------------------------------------
 
-When you configure a supervisor program's ``command`` with ``pipenv run ...``, you 
-need to set locale enviroment variables properly to make it work. 
+When you configure a supervisor program's ``command`` with ``pipenv run ...``, you
+need to set locale enviroment variables properly to make it work.
 
 Add this line under ``[supervisord]`` section in ``/etc/supervisor/supervisord.conf``::
-    
+
     [supervisord]
     environment=LC_ALL='en_US.UTF-8',LANG='en_US.UTF-8'
