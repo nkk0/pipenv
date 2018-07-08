@@ -130,3 +130,11 @@ Add this line under ``[supervisord]`` section in ``/etc/supervisor/supervisord.c
 
     [supervisord]
     environment=LC_ALL='en_US.UTF-8',LANG='en_US.UTF-8'
+
+☤ An exception is raised during ``Locking dependencies…``
+---------------------------------------------------------
+
+Run ``pipenv lock --clear`` and try again. The lock sequence caches results
+to speed up subsequent runs. The cache may contain faulty results if a bug
+causes the format to corrupt, even after the bug is fixed. ``--clear`` flushes
+the cache, and therefore removes the bad results.
