@@ -39,6 +39,7 @@ from .environments import (
     SESSION_IS_INTERACTIVE,
     PIPENV_DOTENV_LOCATION,
     PIPENV_CACHE_DIR,
+    PIPENV_PYTHON,
 )
 from .project import Project, SourceNotFound
 from .utils import (
@@ -416,13 +417,14 @@ def _install_pyenv_python(version):
 
 
 def ensure_python(three=None, python=None):
-    from .environments import PIPENV_PYTHON
     # three == True for Python 3, False for Python 2, None if not specified.
-    if PIPENV_PYTHON and not python and three is None:
+    not_specified = not python and three is None
+
+    if PIPENV_PYTHON and not_specified:
         return PIPENV_PYTHON
 
     global USING_DEFAULT_PYTHON
-    USING_DEFAULT_PYTHON = three is None and not python
+    USING_DEFAULT_PYTHON = not_specified
 
     # Does the user specify a Python to use?
     python = _consolidate_python_argument(three, python)
